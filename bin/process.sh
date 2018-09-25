@@ -12,17 +12,18 @@ then
 fi
 
 # Get the count of the files in each of the incoming directories
-numfilesstR=($prefix-stR/*)
+numfilesstR=($prefix-stR/$prefix*)
 numfilesstR=${#numfilesstR[@]}
 
-numfilesstL=($prefix-stL/*)
+numfilesstL=($prefix-stL/$prefix*)
 numfilesstL=${#numfilesstL[@]}
 
-numfilespdfR=($prefix-pdfR/*)
+numfilespdfR=($prefix-pdfR/$prefix*)
 numfilespdfR=${#numfilespdfR[@]}
 
-numfilespdfL=($prefix-pdfL/*)
+numfilespdfL=($prefix-pdfL/$prefix*)
 numfilespdfL=${#numfilespdfL[@]}
+
 
 if [ $numfilesstL -ne $numfilesstR ] || [ $numfilespdfL -ne $numfilespdfR ]
 then
@@ -30,7 +31,7 @@ then
     exit
 fi
 
-exit
+maxpage=$numfilesstL
 
 renumbereddir="$prefix-renumbered"
 pdfrenumbereddir="$prefix-pdf-renumbered"
